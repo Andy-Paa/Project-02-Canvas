@@ -1,8 +1,6 @@
 package com.example.project_02;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 public class MySQLUserDAO implements UserDAO {
     private Connection connection;
 
@@ -10,8 +8,10 @@ public class MySQLUserDAO implements UserDAO {
         this.connection = connection;
     }
 
+
+
     @Override
-    public void addUser(User user) {
+    public void insert(User user) {
 
     }
 
@@ -21,9 +21,10 @@ public class MySQLUserDAO implements UserDAO {
     }
 
     @Override
-    public void deleteUser(String userName) {
+    public void deleteUser(User user) {
 
     }
+
 
     @Override
     public User getUserByName(String userName) {
@@ -31,8 +32,8 @@ public class MySQLUserDAO implements UserDAO {
     }
 
     @Override
-    public int getUserById(int userId) {
-        return 0;
+    public User getUserById(int userId) {
+        return null;
     }
 
 }

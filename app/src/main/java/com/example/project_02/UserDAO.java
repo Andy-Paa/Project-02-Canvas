@@ -1,12 +1,24 @@
 package com.example.project_02;
 
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
 
 public interface UserDAO {
+    @Insert
+    void insert(User user);
 
-    void addUser(User user);
+    @Update
     void updateUser(User user);
-    void deleteUser(String userName);
+
+    @Delete
+    void deleteUser(User user);
+
+    @Query("SELECT * FROM User WHERE userName = :userName")
     User getUserByName(String userName);
 
-    int getUserById(int userId);
+    @Query("SELECT * FROM User WHERE userId = :userId")
+    User getUserById(int userId);
 }
