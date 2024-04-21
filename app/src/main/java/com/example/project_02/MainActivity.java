@@ -1,26 +1,52 @@
 package com.example.project_02;
-/**
- * test
- * */
-import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
+import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+
+import com.example.project_02.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ViewDataBinding binding;
+    private homework hw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+//
+//
+//        homework homeworks = hw.getInstance(getApplication());
+//
+//        binding.HwDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
+
+//        binding.logButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                getInformationFromDisplay();
+//                insert();
+//
+//                updateDisplay();
+//            }
+//        });
+
+
+//        binding.InputEditText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                updateDisplay();
+//            }
+//        });
+//    }
+//        private void updateDisplay() {
+//        }
     }
 }
