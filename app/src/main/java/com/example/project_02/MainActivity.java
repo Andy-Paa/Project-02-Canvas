@@ -13,17 +13,17 @@ import com.example.project_02.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ViewDataBinding binding;
-    private homework hw;
+    private Repo repo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-//
-//
-//        homework homeworks = hw.getInstance(getApplication());
-//
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+
+        repo= repo.getInstance(getApplication());
+
 //        binding.HwDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
 
 //        binding.logButton.setOnClickListener(new View.OnClickListener() {

@@ -9,9 +9,8 @@ public class MySQLUserDAO implements UserDAO {
     }
 
 
-
     @Override
-    public void insert(User user) {
+    public void insert(User... user) {
 
     }
 
