@@ -12,12 +12,12 @@ public class MySQLUserDAO implements UserDAO {
 
     @Override
     public void addUser(User user) {
-        // 实现添加用户到数据库的逻辑
+
     }
 
     @Override
     public void updateUser(User user) {
-        // 实现更新用户信息到数据库的逻辑
+
     }
 
     @Override
@@ -28,6 +28,11 @@ public class MySQLUserDAO implements UserDAO {
     @Override
     public User getUserByName(String userName) {
         return null;
+    }
+
+    @Override
+    public int getUserById(int userId) {
+        return 0;
     }
 
 }

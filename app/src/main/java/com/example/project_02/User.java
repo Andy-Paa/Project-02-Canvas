@@ -1,5 +1,6 @@
 package com.example.project_02;
 public class User {
+    private int userId;
     private String username;
     private String password;
 
