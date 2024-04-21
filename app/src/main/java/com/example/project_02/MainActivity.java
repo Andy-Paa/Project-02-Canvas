@@ -1,5 +1,7 @@
 package com.example.project_02;
-
+/**
+ * test
+ * */
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
