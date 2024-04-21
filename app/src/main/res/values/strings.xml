@@ -2,6 +2,6 @@
     <string name="app_name">Project-02</string>
     <string name="login">login</string>
     <string name="password">password</string>
-    <string name="login_welcome">Login_welcome</string>
     <string name="username">username</string>
+    <string name="canvas_login">Canvas login</string>
 </resources>
