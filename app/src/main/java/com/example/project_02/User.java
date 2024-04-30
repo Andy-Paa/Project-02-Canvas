@@ -10,6 +10,23 @@ import java.util.Objects;
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int userId;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public boolean isProfessor() {
+        return isProfessor;
+    }
+
+    public void setProfessor(boolean professor) {
+        isProfessor = professor;
+    }
+
     private String username;
     private String password;
 
