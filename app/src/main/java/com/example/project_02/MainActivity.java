@@ -1,5 +1,6 @@
 package com.example.project_02;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -10,19 +11,50 @@ import androidx.databinding.ViewDataBinding;
 
 import com.example.project_02.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-    private ViewDataBinding binding;
-    private Repo repo;
+public class MainActivity extends AppCompatActivity {
+    private TextView textViewWelcomeMessage;
+    private Button buttonLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        textViewWelcomeMessage = findViewById(R.id.textViewWelcomeMessage);
+        buttonLogout = findViewById(R.id.buttonLogout);
+
+        buttonLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //返回登录界面
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish(); //关闭
+            }
+        });
+    }
+}
 
 
-        repo= repo.getInstance(getApplication());
+//public class MainActivity extends AppCompatActivity {
+
+
+//    private ViewDataBinding binding;
+//    private Repo repo;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+//
+//
+//        repo= repo.getInstance(getApplication());
 
 //        binding.HwDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
 
@@ -48,5 +80,5 @@ public class MainActivity extends AppCompatActivity {
 //    }
 //        private void updateDisplay() {
 //        }
-    }
-}
+//    }
+//}
