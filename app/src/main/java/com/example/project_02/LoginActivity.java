@@ -10,6 +10,7 @@ import com.example.project_02.databinding.ActivityMainBinding;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
+        userDAO = CanvasDatabase.getInstance(this).userDao();
 
         editTextUsername = findViewById(R.id.userNameLoginEditText);
         editTextPassword = findViewById(R.id.passwordLoginEditText);
@@ -40,12 +42,42 @@ public class LoginActivity extends AppCompatActivity {
                 String username = editTextUsername.getText().toString().trim();
                 String password = editTextPassword.getText().toString().trim();
 
+
+                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+                    Toast.makeText(LoginActivity.this, "missing username/password", Toast.LENGTH_SHORT).show();
+                } else {
+                    //后台线程登录验证
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //查询用户名和密码
+                            User user = userDAO.getUser(username, password);
+
+                            //返回主线程
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (user != null) {
+                                        //登录成功
+                                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                        finish();
+                                    } else {
+                                        //用户名或密码不对
+                                        Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
+                    }).start();
+                }
+
+
                 /*
                 * 还没写验证步骤
                 * */
                 //if
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                finish(); //关当前页面
+//                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//                finish(); //关当前页面(存档)
             }
         });
         buttonRegister.setOnClickListener(v -> showRegisterDialog());
@@ -87,10 +119,29 @@ public class LoginActivity extends AppCompatActivity {
 
         builder.show();
     }
-
     private void registerUser(String username, String password) {
-        userDAO.insert(new User(username, password));
+        //后台线程
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //防止null
+                if (userDAO != null) {
+                    userDAO.insert(new User(username, password));
+                } else {
+                    //处理null
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(LoginActivity.this, "UserDAO is null", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        }).start();
     }
+//    private void registerUser(String username, String password) {
+//        userDAO.insert(new User(username, password));
+//    }
 
 }
 

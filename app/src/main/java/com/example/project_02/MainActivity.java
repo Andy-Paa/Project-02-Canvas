@@ -17,15 +17,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.concurrent.Executors;
+
 public class MainActivity extends AppCompatActivity {
     private TextView textViewWelcomeMessage;
     private Button buttonLogout;
-
+    private UserDAO userDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //教授
+        Executors.newSingleThreadExecutor().execute(() -> {
+            userDAO = CanvasDatabase.getInstance(this).userDao();
+            //用户名为 "Drew"，密码为 "cst338"，角色为 "Professor"
+            User Professor = new User("Drew", "cst338");
+            Professor.setProfessor(true);
+            userDAO.insert(Professor);
+        });
         textViewWelcomeMessage = findViewById(R.id.textViewWelcomeMessage);
         buttonLogout = findViewById(R.id.buttonLogout);
 
@@ -40,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-
+/*
+* below was studying the example from class video (GymLog)
+* */
 //public class MainActivity extends AppCompatActivity {
 
 

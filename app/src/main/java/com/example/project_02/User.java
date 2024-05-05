@@ -6,11 +6,10 @@ import androidx.room.RoomDatabase;
 
 import java.util.Objects;
 
-@Entity
+@Entity(tableName = "users")
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int userId;
-
     public int getUserId() {
         return userId;
     }
@@ -72,4 +71,9 @@ public class User {
         this.password = password;
         isProfessor = false;
     }
+//    public User(String username, String password, boolean isProfessor) {
+//        this.username = username;
+//        this.password = password;
+//        this.isProfessor = isProfessor;
+//    }
 }
