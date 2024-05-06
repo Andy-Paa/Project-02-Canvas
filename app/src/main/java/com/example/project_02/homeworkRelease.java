@@ -38,26 +38,19 @@ public class homeworkRelease extends AppCompatActivity {
                     String description = editTextDescription.getText().toString();
 
                     if (!title.isEmpty() && !description.isEmpty()) {
-                        // 如果标题和描述都不为空，则创建并插入HW对象到数据库
                         HW hw = new HW();
                         hw.setTitle(title);
                         hw.setDescription(description);
                         // 插入 HW 对象到数据库
                         hwViewModel.insertHw(hw);
 
-                        // 提示已发布并返回上一个页面或其他操作
-                        Toast.makeText(homeworkRelease.this, "作业已发布", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(homeworkRelease.this, "published", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(homeworkRelease.this, AdminLanding.class));
                         finish();
                     } else {
-                        // 如果标题或描述为空，则提示不能为空
-                        Toast.makeText(homeworkRelease.this, "标题和描述不能为空", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(homeworkRelease.this, "missing text", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    // 如果 EditText 对象为空，则处理相应的情况
-                    // 比如，打印日志或者其他处理
                 }
-
             }
         });
     }
