@@ -21,6 +21,7 @@ public abstract class CanvasDatabase extends RoomDatabase {
                     .build();
         }
         return instance;
+        
     }
 //    public abstract UserDAO userDao();
 //
@@ -32,3 +33,5 @@ public abstract class CanvasDatabase extends RoomDatabase {
 //        }
 //    }
 }
+
+
