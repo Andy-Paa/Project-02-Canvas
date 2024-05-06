@@ -12,6 +12,6 @@ public interface HWDAO{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(HW hw);
 
-    @Query("SELECT * FROM hw")
-    List<HW> getAllProjects();
+    @Query("SELECT * FROM HW")
+    List<HW> getAllHW();
 }

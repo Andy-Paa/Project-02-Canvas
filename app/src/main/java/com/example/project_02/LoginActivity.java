@@ -59,8 +59,13 @@ public class LoginActivity extends AppCompatActivity {
                                 public void run() {
                                     if (user != null) {
                                         //登录成功
-                                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                        finish();
+                                        if(user.isProfessor()){
+                                            startActivity(new Intent(LoginActivity.this, AdminLanding.class));
+                                            finish();
+                                        }else {
+                                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                            finish();
+                                        }
                                     } else {
                                         //用户名或密码不对
                                         Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();

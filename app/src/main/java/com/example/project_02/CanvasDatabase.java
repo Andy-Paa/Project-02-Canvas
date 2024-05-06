@@ -7,12 +7,12 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class}, version = 2)
+@Database(entities = {User.class, HW.class}, version = 3)
 public abstract class CanvasDatabase extends RoomDatabase {
     private static volatile CanvasDatabase instance;
 
     public abstract UserDAO userDao();
-
+    public abstract HWDAO hwDao();
     public static synchronized CanvasDatabase getInstance(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
@@ -21,8 +21,9 @@ public abstract class CanvasDatabase extends RoomDatabase {
                     .build();
         }
         return instance;
-        
+
     }
+
 //    public abstract UserDAO userDao();
 //
 //    public static class DatabaseWriteExecutor {

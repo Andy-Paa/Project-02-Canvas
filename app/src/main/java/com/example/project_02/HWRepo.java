@@ -2,13 +2,13 @@ package com.example.project_02;
 
 
 public class HWRepo {
-    private HWDAO HWDAO;
+    private HWDAO hwDAO;
 
     public HWRepo(HWDAO hwDAO) {
-        this.HWDAO = hwDAO;
+        this.hwDAO = hwDAO;
     }
 
     public void insertHW(HW hw) {
-        HWDAO.insert(hw);
+        hwDAO.insert(hw);
     }
 }
